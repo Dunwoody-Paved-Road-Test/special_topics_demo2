@@ -46,13 +46,15 @@ pipeline {
                                 fileContents = readFile path
                                 //print fileContents
                                 // format the html for the json request body
-                                def lines = fileContents.split('\n')
-                                def htmlString = ""
-                                for (int i = 0; i < lines.size(); i++){
-                                    // remove any " (double quotes)
-                                    def line = lines[i].replaceAll('"',"'")
-                                    htmlString = htmlString + line
-                                }
+                                
+                                //def lines = fileContents.split('\n')
+                                // def htmlString = ""
+                                // for (int i = 0; i < lines.size(); i++){
+                                //     // remove any " (double quotes)
+                                //     def line = lines[i].replaceAll('"',"'")
+                                //     htmlString = htmlString + line
+                                // }
+                                def htmlString = fileContents.replaceAll("[\\n\\t]", "");
                                 print htmlString
                                 def name = path.split('/')
                                 name = name[-1]
